@@ -1,0 +1,845 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="bgroup93_prodModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DeletedEmployees">
+          <Key>
+            <PropertyRef Name="EmployeeNumber" />
+          </Key>
+          <Property Name="EmployeeNumber" Type="int" Nullable="false" />
+          <Property Name="Id" Type="nvarchar" MaxLength="10" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="100" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="25" />
+          <Property Name="StartWorking" Type="date" />
+          <Property Name="Img" Type="nvarchar" MaxLength="500" />
+          <Property Name="DeletionDate" Type="date" />
+          <Property Name="NumberReason" Type="int" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="50" />
+          <Property Name="ManagerAccess" Type="nvarchar" MaxLength="3" />
+          <Property Name="Details" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="DeletedVehicles">
+          <Key>
+            <PropertyRef Name="VehicleNumber" />
+          </Key>
+          <Property Name="VehicleNumber" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" MaxLength="25" />
+          <Property Name="TestValidityDate" Type="date" />
+          <Property Name="EntryCompany" Type="date" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+          <Property Name="Img" Type="nvarchar" MaxLength="500" />
+          <Property Name="DeletionDate" Type="date" />
+          <Property Name="NumberReason" Type="int" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="50" />
+          <Property Name="Details" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeNumber" />
+          </Key>
+          <Property Name="EmployeeNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="nvarchar" MaxLength="10" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="100" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="25" />
+          <Property Name="StartWorking" Type="date" />
+          <Property Name="Img" Type="nvarchar" MaxLength="500" />
+          <Property Name="ManagerAccess" Type="nvarchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="Manufacturers">
+          <Key>
+            <PropertyRef Name="Manufacturer" />
+          </Key>
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderNumber" />
+          </Key>
+          <Property Name="OrderNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ContactNumber" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Pssengers" Type="int" />
+          <Property Name="Details" Type="nvarchar" MaxLength="500" />
+          <Property Name="Driver" Type="int" />
+          <Property Name="Vehicle" Type="nvarchar" MaxLength="9" />
+          <Property Name="OrderStatus" Type="nvarchar" MaxLength="10" />
+          <Property Name="Type" Type="nvarchar" MaxLength="20" />
+          <Property Name="Bid" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderStatus">
+          <Key>
+            <PropertyRef Name="StatusNumber" />
+          </Key>
+          <Property Name="StatusNumber" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OrderUpdates">
+          <Key>
+            <PropertyRef Name="UpdateId" />
+          </Key>
+          <Property Name="UpdateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="OrderNumber" Type="int" />
+        </EntityType>
+        <EntityType Name="PickUps">
+          <Key>
+            <PropertyRef Name="PickUpId" />
+          </Key>
+          <Property Name="PickUpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PickUpNumber" Type="int" Nullable="false" />
+          <Property Name="CollectionPoint" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CollectionTime" Type="time" Precision="7" />
+          <Property Name="Destination" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderNumber" Type="int" />
+        </EntityType>
+        <EntityType Name="ReasonsDeleteVehicles">
+          <Key>
+            <PropertyRef Name="Number" />
+          </Key>
+          <Property Name="Number" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ReasonsForLeaving">
+          <Key>
+            <PropertyRef Name="Number" />
+          </Key>
+          <Property Name="Number" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Vehicles">
+          <Key>
+            <PropertyRef Name="VehicleNumber" />
+          </Key>
+          <Property Name="VehicleNumber" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" MaxLength="25" />
+          <Property Name="TestValidityDate" Type="date" />
+          <Property Name="EntryCompany" Type="date" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+          <Property Name="Img" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="VehiclesTypes">
+          <Key>
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="Type" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="NumberOfSeats" Type="int" />
+        </EntityType>
+        <Association Name="FK__DeletedEm__Numbe__164452B1">
+          <End Role="ReasonsForLeaving" Type="Self.ReasonsForLeaving" Multiplicity="0..1" />
+          <End Role="DeletedEmployees" Type="Self.DeletedEmployees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReasonsForLeaving">
+              <PropertyRef Name="Number" />
+            </Principal>
+            <Dependent Role="DeletedEmployees">
+              <PropertyRef Name="NumberReason" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DeletedVe__Manuf__267ABA7A">
+          <End Role="Manufacturers" Type="Self.Manufacturers" Multiplicity="0..1" />
+          <End Role="DeletedVehicles" Type="Self.DeletedVehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturers">
+              <PropertyRef Name="Manufacturer" />
+            </Principal>
+            <Dependent Role="DeletedVehicles">
+              <PropertyRef Name="Manufacturer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DeletedVe__Numbe__286302EC">
+          <End Role="ReasonsDeleteVehicles" Type="Self.ReasonsDeleteVehicles" Multiplicity="0..1" />
+          <End Role="DeletedVehicles" Type="Self.DeletedVehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReasonsDeleteVehicles">
+              <PropertyRef Name="Number" />
+            </Principal>
+            <Dependent Role="DeletedVehicles">
+              <PropertyRef Name="NumberReason" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DeletedVeh__Type__276EDEB3">
+          <End Role="VehiclesTypes" Type="Self.VehiclesTypes" Multiplicity="0..1" />
+          <End Role="DeletedVehicles" Type="Self.DeletedVehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehiclesTypes">
+              <PropertyRef Name="Type" />
+            </Principal>
+            <Dependent Role="DeletedVehicles">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__Driver__2D27B809">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeNumber" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Driver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__OrderSta__2F10007B">
+          <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="StatusNumber" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="OrderStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__Vehicle__2E1BDC42">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="VehicleNumber" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Vehicle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderUpda__Order__34C8D9D1">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="OrderUpdates" Type="Self.OrderUpdates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderNumber" />
+            </Principal>
+            <Dependent Role="OrderUpdates">
+              <PropertyRef Name="OrderNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PickUps__OrderNu__31EC6D26">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="PickUps" Type="Self.PickUps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderNumber" />
+            </Principal>
+            <Dependent Role="PickUps">
+              <PropertyRef Name="OrderNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehicles__Manufa__1FCDBCEB">
+          <End Role="Manufacturers" Type="Self.Manufacturers" Multiplicity="0..1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturers">
+              <PropertyRef Name="Manufacturer" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="Manufacturer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehicles__Type__20C1E124">
+          <End Role="VehiclesTypes" Type="Self.VehiclesTypes" Multiplicity="0..1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehiclesTypes">
+              <PropertyRef Name="Type" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bgroup93_prodModelStoreContainer">
+          <EntitySet Name="DeletedEmployees" EntityType="Self.DeletedEmployees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeletedVehicles" EntityType="Self.DeletedVehicles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manufacturers" EntityType="Self.Manufacturers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderUpdates" EntityType="Self.OrderUpdates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PickUps" EntityType="Self.PickUps" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReasonsDeleteVehicles" EntityType="Self.ReasonsDeleteVehicles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReasonsForLeaving" EntityType="Self.ReasonsForLeaving" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehicles" EntityType="Self.Vehicles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehiclesTypes" EntityType="Self.VehiclesTypes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__DeletedEm__Numbe__164452B1" Association="Self.FK__DeletedEm__Numbe__164452B1">
+            <End Role="ReasonsForLeaving" EntitySet="ReasonsForLeaving" />
+            <End Role="DeletedEmployees" EntitySet="DeletedEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DeletedVe__Manuf__267ABA7A" Association="Self.FK__DeletedVe__Manuf__267ABA7A">
+            <End Role="Manufacturers" EntitySet="Manufacturers" />
+            <End Role="DeletedVehicles" EntitySet="DeletedVehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DeletedVe__Numbe__286302EC" Association="Self.FK__DeletedVe__Numbe__286302EC">
+            <End Role="ReasonsDeleteVehicles" EntitySet="ReasonsDeleteVehicles" />
+            <End Role="DeletedVehicles" EntitySet="DeletedVehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DeletedVeh__Type__276EDEB3" Association="Self.FK__DeletedVeh__Type__276EDEB3">
+            <End Role="VehiclesTypes" EntitySet="VehiclesTypes" />
+            <End Role="DeletedVehicles" EntitySet="DeletedVehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__Driver__2D27B809" Association="Self.FK__Orders__Driver__2D27B809">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__OrderSta__2F10007B" Association="Self.FK__Orders__OrderSta__2F10007B">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__Vehicle__2E1BDC42" Association="Self.FK__Orders__Vehicle__2E1BDC42">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderUpda__Order__34C8D9D1" Association="Self.FK__OrderUpda__Order__34C8D9D1">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderUpdates" EntitySet="OrderUpdates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PickUps__OrderNu__31EC6D26" Association="Self.FK__PickUps__OrderNu__31EC6D26">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="PickUps" EntitySet="PickUps" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehicles__Manufa__1FCDBCEB" Association="Self.FK__Vehicles__Manufa__1FCDBCEB">
+            <End Role="Manufacturers" EntitySet="Manufacturers" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehicles__Type__20C1E124" Association="Self.FK__Vehicles__Type__20C1E124">
+            <End Role="VehiclesTypes" EntitySet="VehiclesTypes" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bgroup93_prodModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DeletedEmployees">
+          <Key>
+            <PropertyRef Name="EmployeeNumber" />
+          </Key>
+          <Property Name="EmployeeNumber" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="StartWorking" Type="DateTime" Precision="0" />
+          <Property Name="Img" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DeletionDate" Type="DateTime" Precision="0" />
+          <Property Name="NumberReason" Type="Int32" />
+          <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ManagerAccess" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Details" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ReasonsForLeaving" Relationship="Self.FK__DeletedEm__Numbe__164452B1" FromRole="DeletedEmployees" ToRole="ReasonsForLeaving" />
+        </EntityType>
+        <EntityType Name="DeletedVehicles">
+          <Key>
+            <PropertyRef Name="VehicleNumber" />
+          </Key>
+          <Property Name="VehicleNumber" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="TestValidityDate" Type="DateTime" Precision="0" />
+          <Property Name="EntryCompany" Type="DateTime" Precision="0" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Img" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DeletionDate" Type="DateTime" Precision="0" />
+          <Property Name="NumberReason" Type="Int32" />
+          <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Details" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Manufacturers" Relationship="Self.FK__DeletedVe__Manuf__267ABA7A" FromRole="DeletedVehicles" ToRole="Manufacturers" />
+          <NavigationProperty Name="ReasonsDeleteVehicles" Relationship="Self.FK__DeletedVe__Numbe__286302EC" FromRole="DeletedVehicles" ToRole="ReasonsDeleteVehicles" />
+          <NavigationProperty Name="VehiclesTypes" Relationship="Self.FK__DeletedVeh__Type__276EDEB3" FromRole="DeletedVehicles" ToRole="VehiclesTypes" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeNumber" />
+          </Key>
+          <Property Name="EmployeeNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="StartWorking" Type="DateTime" Precision="0" />
+          <Property Name="Img" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ManagerAccess" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Driver__2D27B809" FromRole="Employees" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Manufacturers">
+          <Key>
+            <PropertyRef Name="Manufacturer" />
+          </Key>
+          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DeletedVehicles" Relationship="Self.FK__DeletedVe__Manuf__267ABA7A" FromRole="Manufacturers" ToRole="DeletedVehicles" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK__Vehicles__Manufa__1FCDBCEB" FromRole="Manufacturers" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderNumber" />
+          </Key>
+          <Property Name="OrderNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Pssengers" Type="Int32" />
+          <Property Name="Details" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Driver" Type="Int32" />
+          <Property Name="Vehicle" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="OrderStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Orders__Driver__2D27B809" FromRole="Orders" ToRole="Employees" />
+          <NavigationProperty Name="OrderStatus1" Relationship="Self.FK__Orders__OrderSta__2F10007B" FromRole="Orders" ToRole="OrderStatus" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK__Orders__Vehicle__2E1BDC42" FromRole="Orders" ToRole="Vehicles" />
+          <NavigationProperty Name="PickUps" Relationship="Self.FK__PickUps__OrderNu__31EC6D26" FromRole="Orders" ToRole="PickUps" />
+          <Property Name="Bid" Type="Int32" />
+          <NavigationProperty Name="OrderUpdates" Relationship="bgroup93_prodModel.FK__OrderUpda__Order__34C8D9D1" FromRole="Orders" ToRole="OrderUpdates" />
+        </EntityType>
+        <EntityType Name="OrderStatus">
+          <Key>
+            <PropertyRef Name="StatusNumber" />
+          </Key>
+          <Property Name="StatusNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__OrderSta__2F10007B" FromRole="OrderStatus" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="PickUps">
+          <Key>
+            <PropertyRef Name="PickUpId" />
+          </Key>
+          <Property Name="PickUpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PickUpNumber" Type="Int32" Nullable="false" />
+          <Property Name="CollectionPoint" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CollectionTime" Type="Time" Precision="7" />
+          <Property Name="Destination" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrderNumber" Type="Int32" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__PickUps__OrderNu__31EC6D26" FromRole="PickUps" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="ReasonsDeleteVehicles">
+          <Key>
+            <PropertyRef Name="Number" />
+          </Key>
+          <Property Name="Number" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DeletedVehicles" Relationship="Self.FK__DeletedVe__Numbe__286302EC" FromRole="ReasonsDeleteVehicles" ToRole="DeletedVehicles" />
+        </EntityType>
+        <EntityType Name="ReasonsForLeaving">
+          <Key>
+            <PropertyRef Name="Number" />
+          </Key>
+          <Property Name="Number" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DeletedEmployees" Relationship="Self.FK__DeletedEm__Numbe__164452B1" FromRole="ReasonsForLeaving" ToRole="DeletedEmployees" />
+        </EntityType>
+        <EntityType Name="Vehicles">
+          <Key>
+            <PropertyRef Name="VehicleNumber" />
+          </Key>
+          <Property Name="VehicleNumber" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="TestValidityDate" Type="DateTime" Precision="0" />
+          <Property Name="EntryCompany" Type="DateTime" Precision="0" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Img" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Manufacturers" Relationship="Self.FK__Vehicles__Manufa__1FCDBCEB" FromRole="Vehicles" ToRole="Manufacturers" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Vehicle__2E1BDC42" FromRole="Vehicles" ToRole="Orders" />
+          <NavigationProperty Name="VehiclesTypes" Relationship="Self.FK__Vehicles__Type__20C1E124" FromRole="Vehicles" ToRole="VehiclesTypes" />
+        </EntityType>
+        <EntityType Name="VehiclesTypes">
+          <Key>
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="Type" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumberOfSeats" Type="Int32" />
+          <NavigationProperty Name="DeletedVehicles" Relationship="Self.FK__DeletedVeh__Type__276EDEB3" FromRole="VehiclesTypes" ToRole="DeletedVehicles" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK__Vehicles__Type__20C1E124" FromRole="VehiclesTypes" ToRole="Vehicles" />
+        </EntityType>
+        <Association Name="FK__DeletedEm__Numbe__164452B1">
+          <End Role="ReasonsForLeaving" Type="Self.ReasonsForLeaving" Multiplicity="0..1" />
+          <End Role="DeletedEmployees" Type="Self.DeletedEmployees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReasonsForLeaving">
+              <PropertyRef Name="Number" />
+            </Principal>
+            <Dependent Role="DeletedEmployees">
+              <PropertyRef Name="NumberReason" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DeletedVe__Manuf__267ABA7A">
+          <End Role="Manufacturers" Type="Self.Manufacturers" Multiplicity="0..1" />
+          <End Role="DeletedVehicles" Type="Self.DeletedVehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturers">
+              <PropertyRef Name="Manufacturer" />
+            </Principal>
+            <Dependent Role="DeletedVehicles">
+              <PropertyRef Name="Manufacturer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DeletedVe__Numbe__286302EC">
+          <End Role="ReasonsDeleteVehicles" Type="Self.ReasonsDeleteVehicles" Multiplicity="0..1" />
+          <End Role="DeletedVehicles" Type="Self.DeletedVehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReasonsDeleteVehicles">
+              <PropertyRef Name="Number" />
+            </Principal>
+            <Dependent Role="DeletedVehicles">
+              <PropertyRef Name="NumberReason" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DeletedVeh__Type__276EDEB3">
+          <End Role="VehiclesTypes" Type="Self.VehiclesTypes" Multiplicity="0..1" />
+          <End Role="DeletedVehicles" Type="Self.DeletedVehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehiclesTypes">
+              <PropertyRef Name="Type" />
+            </Principal>
+            <Dependent Role="DeletedVehicles">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__Driver__2D27B809">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeNumber" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Driver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehicles__Manufa__1FCDBCEB">
+          <End Role="Manufacturers" Type="Self.Manufacturers" Multiplicity="0..1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturers">
+              <PropertyRef Name="Manufacturer" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="Manufacturer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__OrderSta__2F10007B">
+          <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="StatusNumber" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="OrderStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__Vehicle__2E1BDC42">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="VehicleNumber" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Vehicle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PickUps__OrderNu__31EC6D26">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="PickUps" Type="Self.PickUps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderNumber" />
+            </Principal>
+            <Dependent Role="PickUps">
+              <PropertyRef Name="OrderNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehicles__Type__20C1E124">
+          <End Role="VehiclesTypes" Type="Self.VehiclesTypes" Multiplicity="0..1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehiclesTypes">
+              <PropertyRef Name="Type" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FinalProjDbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DeletedEmployees" EntityType="Self.DeletedEmployees" />
+          <EntitySet Name="DeletedVehicles" EntityType="Self.DeletedVehicles" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" />
+          <EntitySet Name="Manufacturers" EntityType="Self.Manufacturers" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" />
+          <EntitySet Name="PickUps" EntityType="Self.PickUps" />
+          <EntitySet Name="ReasonsDeleteVehicles" EntityType="Self.ReasonsDeleteVehicles" />
+          <EntitySet Name="ReasonsForLeaving" EntityType="Self.ReasonsForLeaving" />
+          <EntitySet Name="Vehicles" EntityType="Self.Vehicles" />
+          <EntitySet Name="VehiclesTypes" EntityType="Self.VehiclesTypes" />
+          <AssociationSet Name="FK__DeletedEm__Numbe__164452B1" Association="Self.FK__DeletedEm__Numbe__164452B1">
+            <End Role="ReasonsForLeaving" EntitySet="ReasonsForLeaving" />
+            <End Role="DeletedEmployees" EntitySet="DeletedEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DeletedVe__Manuf__267ABA7A" Association="Self.FK__DeletedVe__Manuf__267ABA7A">
+            <End Role="Manufacturers" EntitySet="Manufacturers" />
+            <End Role="DeletedVehicles" EntitySet="DeletedVehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DeletedVe__Numbe__286302EC" Association="Self.FK__DeletedVe__Numbe__286302EC">
+            <End Role="ReasonsDeleteVehicles" EntitySet="ReasonsDeleteVehicles" />
+            <End Role="DeletedVehicles" EntitySet="DeletedVehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DeletedVeh__Type__276EDEB3" Association="Self.FK__DeletedVeh__Type__276EDEB3">
+            <End Role="VehiclesTypes" EntitySet="VehiclesTypes" />
+            <End Role="DeletedVehicles" EntitySet="DeletedVehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__Driver__2D27B809" Association="Self.FK__Orders__Driver__2D27B809">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehicles__Manufa__1FCDBCEB" Association="Self.FK__Vehicles__Manufa__1FCDBCEB">
+            <End Role="Manufacturers" EntitySet="Manufacturers" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__OrderSta__2F10007B" Association="Self.FK__Orders__OrderSta__2F10007B">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__Vehicle__2E1BDC42" Association="Self.FK__Orders__Vehicle__2E1BDC42">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PickUps__OrderNu__31EC6D26" Association="Self.FK__PickUps__OrderNu__31EC6D26">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="PickUps" EntitySet="PickUps" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehicles__Type__20C1E124" Association="Self.FK__Vehicles__Type__20C1E124">
+            <End Role="VehiclesTypes" EntitySet="VehiclesTypes" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <EntitySet Name="OrderUpdates" EntityType="bgroup93_prodModel.OrderUpdates" />
+          <AssociationSet Name="FK__OrderUpda__Order__34C8D9D1" Association="bgroup93_prodModel.FK__OrderUpda__Order__34C8D9D1">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderUpdates" EntitySet="OrderUpdates" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="OrderUpdates">
+          <Key>
+            <PropertyRef Name="UpdateId" />
+          </Key>
+          <Property Name="UpdateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="OrderNumber" Type="Int32" />
+          <NavigationProperty Name="Orders" Relationship="bgroup93_prodModel.FK__OrderUpda__Order__34C8D9D1" FromRole="OrderUpdates" ToRole="Orders" />
+        </EntityType>
+        <Association Name="FK__OrderUpda__Order__34C8D9D1">
+          <End Type="bgroup93_prodModel.Orders" Role="Orders" Multiplicity="0..1" />
+          <End Type="bgroup93_prodModel.OrderUpdates" Role="OrderUpdates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderNumber" />
+            </Principal>
+            <Dependent Role="OrderUpdates">
+              <PropertyRef Name="OrderNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bgroup93_prodModelStoreContainer" CdmEntityContainer="FinalProjDbContext">
+          <EntitySetMapping Name="DeletedEmployees">
+            <EntityTypeMapping TypeName="bgroup93_prodModel.DeletedEmployees">
+              <MappingFragment StoreEntitySet="DeletedEmployees">
+                <ScalarProperty Name="EmployeeNumber" ColumnName="EmployeeNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="StartWorking" ColumnName="StartWorking" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
+                <ScalarProperty Name="NumberReason" ColumnName="NumberReason" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="ManagerAccess" ColumnName="ManagerAccess" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeletedVehicles">
+            <EntityTypeMapping TypeName="bgroup93_prodModel.DeletedVehicles">
+              <MappingFragment StoreEntitySet="DeletedVehicles">
+                <ScalarProperty Name="VehicleNumber" ColumnName="VehicleNumber" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="TestValidityDate" ColumnName="TestValidityDate" />
+                <ScalarProperty Name="EntryCompany" ColumnName="EntryCompany" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
+                <ScalarProperty Name="NumberReason" ColumnName="NumberReason" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="bgroup93_prodModel.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="EmployeeNumber" ColumnName="EmployeeNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="StartWorking" ColumnName="StartWorking" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="ManagerAccess" ColumnName="ManagerAccess" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Manufacturers">
+            <EntityTypeMapping TypeName="bgroup93_prodModel.Manufacturers">
+              <MappingFragment StoreEntitySet="Manufacturers">
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="bgroup93_prodModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Bid" ColumnName="Bid" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Pssengers" ColumnName="Pssengers" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Driver" ColumnName="Driver" />
+                <ScalarProperty Name="Vehicle" ColumnName="Vehicle" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderStatus">
+            <EntityTypeMapping TypeName="bgroup93_prodModel.OrderStatus">
+              <MappingFragment StoreEntitySet="OrderStatus">
+                <ScalarProperty Name="StatusNumber" ColumnName="StatusNumber" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PickUps">
+            <EntityTypeMapping TypeName="bgroup93_prodModel.PickUps">
+              <MappingFragment StoreEntitySet="PickUps">
+                <ScalarProperty Name="PickUpId" ColumnName="PickUpId" />
+                <ScalarProperty Name="PickUpNumber" ColumnName="PickUpNumber" />
+                <ScalarProperty Name="CollectionPoint" ColumnName="CollectionPoint" />
+                <ScalarProperty Name="CollectionTime" ColumnName="CollectionTime" />
+                <ScalarProperty Name="Destination" ColumnName="Destination" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReasonsDeleteVehicles">
+            <EntityTypeMapping TypeName="bgroup93_prodModel.ReasonsDeleteVehicles">
+              <MappingFragment StoreEntitySet="ReasonsDeleteVehicles">
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReasonsForLeaving">
+            <EntityTypeMapping TypeName="bgroup93_prodModel.ReasonsForLeaving">
+              <MappingFragment StoreEntitySet="ReasonsForLeaving">
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicles">
+            <EntityTypeMapping TypeName="bgroup93_prodModel.Vehicles">
+              <MappingFragment StoreEntitySet="Vehicles">
+                <ScalarProperty Name="VehicleNumber" ColumnName="VehicleNumber" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="TestValidityDate" ColumnName="TestValidityDate" />
+                <ScalarProperty Name="EntryCompany" ColumnName="EntryCompany" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehiclesTypes">
+            <EntityTypeMapping TypeName="bgroup93_prodModel.VehiclesTypes">
+              <MappingFragment StoreEntitySet="VehiclesTypes">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="NumberOfSeats" ColumnName="NumberOfSeats" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderUpdates">
+            <EntityTypeMapping TypeName="bgroup93_prodModel.OrderUpdates">
+              <MappingFragment StoreEntitySet="OrderUpdates">
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UpdateId" ColumnName="UpdateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
